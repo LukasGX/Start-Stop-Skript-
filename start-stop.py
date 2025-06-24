@@ -16,6 +16,12 @@ def runCommand(command):
             print(f"Changed directory to {path}")
         else:
             print(f"Directory {path} does not exist.")
+    elif (command.startswith("cat")):
+        filename = command[4:].strip()
+        if os.path.isfile(filename):
+            with open(filename, 'r') as file:
+                content = file.read()
+                print(content)
     elif (command.startswith("exit")):
         print("Exiting...")
         exit()
@@ -26,6 +32,7 @@ print("==============================================================")
 print("Select option:")
 print("1) Start")
 print("2) Exit")
+print("==============================================================")
 user_input = ""
 try:
     user_input = str(input("Your option: "))
@@ -45,4 +52,4 @@ elif user_input == "2":
     print("Exiting...")
     exit()
 else:
-    print('Unknown input!')
+    print("Unknown input!")
